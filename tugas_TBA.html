@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latihan 5 - Teori Bahasa dan Automata</title>
+    <style>
+      @media print {
+        body {
+          margin: 0;
+        }
+        .page-break {
+          page-break-after: always;
+        }
+        .no-print {
+          display: none;
+        }
+      }
+
+      body {
+        font-family: "Times New Roman", serif;
+        font-size: 12pt;
+        line-height: 1.6;
+        max-width: 210mm;
+        margin: 0 auto;
+        padding: 20mm;
+        background: white;
+        color: black;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 18pt;
+        margin-bottom: 10mm;
+        border-bottom: 2px solid black;
+        padding-bottom: 5mm;
+      }
+
+      h2 {
+        font-size: 14pt;
+        margin-top: 8mm;
+        margin-bottom: 5mm;
+        background: #f0f0f0;
+        padding: 3mm 5mm;
+        border-left: 4px solid #333;
+      }
+
+      h3 {
+        font-size: 12pt;
+        margin-top: 5mm;
+        margin-bottom: 3mm;
+        text-decoration: underline;
+      }
+
+      .header-info {
+        text-align: center;
+        margin-bottom: 10mm;
+        font-size: 11pt;
+      }
+
+      .soal-box {
+        border: 1px solid black;
+        padding: 5mm;
+        margin: 5mm 0;
+        background: #fafafa;
+      }
+
+      .diagram-container {
+        margin: 8mm 0;
+        padding: 5mm;
+        border: 1px solid #ccc;
+      }
+
+      svg {
+        display: block;
+        margin: 5mm auto;
+        background: white;
+        border: 1px solid #999;
+      }
+
+      .explanation {
+        margin: 5mm 0;
+        text-align: justify;
+      }
+
+      .er-display {
+        font-family: "Courier New", monospace;
+        font-size: 14pt;
+        font-weight: bold;
+        background: #f0f0f0;
+        padding: 3mm 5mm;
+        border: 1px solid #333;
+        margin: 5mm 0;
+        text-align: center;
+      }
+
+      .definition-box {
+        background: #e8f4f8;
+        border: 2px solid #0066cc;
+        padding: 5mm;
+        margin: 5mm 0;
+      }
+
+      .example-box {
+        background: #fff9e6;
+        border-left: 4px solid #ff9900;
+        padding: 3mm 5mm;
+        margin: 5mm 0;
+      }
+
+      .notation-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 5mm 0;
+      }
+
+      .notation-table th,
+      .notation-table td {
+        border: 1px solid #333;
+        padding: 2mm 5mm;
+        text-align: left;
+      }
+
+      .notation-table th {
+        background: #e0e0e0;
+        font-weight: bold;
+      }
+
+      ul,
+      ol {
+        margin: 3mm 0;
+        padding-left: 10mm;
+      }
+
+      .step-explanation {
+        background: #f5f5f5;
+        padding: 3mm;
+        margin: 3mm 0;
+        border-radius: 3px;
+      }
+
+      .summary-box {
+        background: #f0f8ff;
+        border: 2px solid #4169e1;
+        padding: 5mm;
+        margin: 10mm 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header-info">
+      <strong>TEORI BAHASA DAN AUTOMATA</strong><br />
+      Pertemuan 5 - Ekspresi Reguler<br />
+      <em>Hubungan Ekspresi Reguler dengan Finite State Automata</em>
+    </div>
+
+    <div class="header-info" style="margin-bottom: 15mm">
+      <strong>Nama: Muhammad Alvin Faris</strong><br />
+      <strong>NPM: 202343500943</strong><br />
+      <strong>Kelas: R5L</strong><br />
+      <strong>Mata Kuliah: Teori Bahasa dan Automata</strong>
+    </div>
+
+    <h1>LATIHAN 5<br />PENYELESAIAN LENGKAP</h1>
+
+    <div class="soal-box">
+      <strong>Soal:</strong> Gambarkan hubungan ER dengan FSA pada ER di bawah
+      ini:
+      <ol type="a">
+        <li>ER = ab*cc</li>
+        <li>ER = 01*1 ∪ 001</li>
+        <li>ER = a* ∪ b*</li>
+      </ol>
+    </div>
+
+    <!-- SOAL A -->
+    <div class="diagram-container">
+      <h2>A. Ekspresi Reguler: ab*cc</h2>
+
+      <h3>1. Analisis Ekspresi Reguler</h3>
+      <div class="explanation">
+        <div class="er-display">ER = ab*cc</div>
+
+        <strong>Interpretasi:</strong><br />
+        Ekspresi reguler ab*cc dapat dipecah menjadi komponen-komponen:
+        <ul>
+          <li><strong>a</strong> : tepat satu karakter 'a'</li>
+          <li>
+            <strong>b*</strong> : nol atau lebih karakter 'b' (Kleene closure)
+          </li>
+          <li><strong>cc</strong> : tepat dua karakter 'c' berurutan</li>
+        </ul>
+      </div>
+
+      <h3>2. String yang Diterima</h3>
+      <div class="example-box">
+        <strong>Contoh string yang diterima:</strong>
+        <ul>
+          <li>acc (a diikuti 0 buah b, lalu cc)</li>
+          <li>abcc (a diikuti 1 buah b, lalu cc)</li>
+          <li>abbcc (a diikuti 2 buah b, lalu cc)</li>
+          <li>abbbcc (a diikuti 3 buah b, lalu cc)</li>
+          <li>dan seterusnya...</li>
+        </ul>
+
+        <strong>String yang ditolak:</strong>
+        <ul>
+          <li>bcc (tidak dimulai dengan a)</li>
+          <li>ac (hanya ada satu c)</li>
+          <li>abbc (hanya ada satu c di akhir)</li>
+          <li>aacc (ada dua a)</li>
+        </ul>
+      </div>
+
+      <h3>3. Diagram Finite State Automata</h3>
+      <svg width="600" height="200" viewBox="0 0 600 200">
+        <!-- State q0 (initial) -->
+        <circle
+          cx="80"
+          cy="100"
+          r="25"
+          fill="white"
+          stroke="black"
+          stroke-width="2"
+        />
+        <text x="80" y="105" text-anchor="middle" font-size="16">q₀</text>
+        <path
+          d="M 30 100 L 55 100"
+          stroke="black"
+          stroke-width="2"
+          marker-end="url(#arrowhead)"
+        />
+
+        <!-- State q1 -->
+        <circle
+          cx="200"
+          cy="100"
+          r="25"
+          fill="white"
+          stroke="black"
+          stroke-width="2"
+        />
+        <text x="200" y="105" text-anchor="middle" font-size="16">q₁</text>
+
+        <!-- State q2 -->
+        <circle
+          cx="320"
+          cy="100"
+          r="25"
+          fill="white"
+          stroke="black"
+          stroke-width="2"
+        />
+        <text x="320" y="105" text-anchor="middle" font-size="16">q₂</text>
+
+        <!-- State q3 -->
+        <circle
+          cx="440"
+          cy="100"
+          r="25"
+          fill="white"
+          stroke="black"
+          stroke-width="2"
+        />
+        <text x="440" y="105" text-anchor="middle" font-size="16">q₃</text>
+
+        <!-- State q4 (final) -->
+        <circle
+          cx="540"
+          cy="100"
+          r="25"
+          fill="white"
+          stroke="black"
+          stroke-width="2"
+        />
+        <circle
+          cx="540"
+          cy="100"
+          r="20"
+          fill="none"
+          stroke="black"
+          stroke-width="2"
+        />
+        <text x="540" y="105" text-anchor="middle" font-size="16">q₄</text>
+
+        <!-- Transitions -->
+        <path
+          d="M 105 100 L 175 100"
+          stroke="black"
+          stroke-width="2"
+          marker-end="url(#arrowhead)"
+        />
+        <text x="140" y="90" text-anchor="middle" font-size="14">a</text>
+
+        <path
+          d="M 185 78 Q 160 50, 185 22 Q 200 10, 215 22 Q 240 50, 215 78"
+          stroke="black"
+          stroke-width="2"
+          fill="none"
+          marker-end="url(#arrowhead)"
+        />
+        <text x="200" y="45" text-anchor="middle" font-size="14">b</text>
+
+        <path
+          d="M 225 100 L 295 100"
+          stroke="black"
+          stroke-width="2"
+          marker-end="url(#arrowhead)"
+        />
+        <text x="260" y="90" text-anchor="middle" font-size="14">c</text>
+
+        <path
+          d="M 345 100 L 415 100"
+          stroke="black"
+          stroke-width="2"
+          marker-end="url(#arrowhead)"
+        />
+        <text x="380" y="90" text-anchor="middle" font-size="14">c</text>
+
+        <defs>
+          <marker
+            id="arrowhead"
+            markerWidth="10"
+            markerHeight="7"
+            refX="9"
+            refY="3.5"
+            orient="auto"
+          >
+            <polygon points="0 0, 10 3.5, 0 7" fill="black" />
+          </marker>
+        </defs>
+      </svg>
+
+      <h3>4. Tabel Transisi</h3>
+      <table class="notation-table">
+        <thead>
+          <tr>
+            <th>State</th>
+            <th>Input 'a'</th>
+            <th>Input 'b'</th>
+            <th>Input 'c'</th>
+            <th>Keterangan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>→q₀</td>
+            <td>q₁</td>
+            <td>-</td>
+            <td>-</td>
+            <td>State awal</td>
+          </tr>
+          <tr>
+            <td>q₁</td>
+            <td>-</td>
+            <td>q₁</td>
+            <td>q₂</td>
+            <td>Menerima b* dan transisi ke c</td>
+          </tr>
+          <tr>
+            <td>q₂</td>
+            <td>-</td>
+            <td>-</td>
+            <td>q₃</td>
+            <td>Menerima c pertama</td>
+          </tr>
+          <tr>
+            <td>q₃</td>
+            <td>-</td>
+            <td>-</td>
+            <td>q₄</td>
+            <td>Menerima c kedua</td>
+          </tr>
+          <tr>
+            <td>*q₄</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>State akhir (final)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>5. Penjelasan Konstruksi FSA</h3>
+      <div class="step-explanation">
+        <strong>Langkah-langkah konstruksi:</strong>
+        <ol>
+          <li><strong>State q₀:</strong> State awal yang menunggu input 'a'</li>
+          <li>
+            <strong>State q₁:</strong> State setelah menerima 'a', dapat
+            menerima 0 atau lebih 'b' (self-loop)
+          </li>
+          <li>
+            <strong>State q₂:</strong> State setelah menerima 'c' pertama dari
+            q₁
+          </li>
+          <li><strong>State q₃:</strong> State transisi untuk 'c' kedua</li>
+          <li>
+            <strong>State q₄:</strong> State akhir setelah menerima string yang
+            sesuai pola ab*cc
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- SOAL B -->
+    <div class="diagram-container">
+      <h2>B. Ekspresi Reguler: 01*1 ∪ 001</h2>
+
+      <h3>1. Analisis Ekspresi Reguler</h3>
+      <div class="explanation">
+        <div class="er-display">ER = 01*1 ∪ 001</div>
+
+        <strong>Interpretasi:</strong><br />
+        Ekspresi ini merupakan union (∪) dari dua pola:
+        <ul>
+          <li>
+            <strong>01*1</strong> : '0' diikuti nol atau lebih '1', diakhiri
+            dengan '1' (minimal satu '1')
+          </li>
+          <li><strong>001</strong> : tepat string '001'</li>
+        </ul>
+
+        <div class="definition-box">
+          <strong>Catatan Penting:</strong><br />
+          Operator ∪ (union) berarti FSA menerima string yang memenuhi SALAH
+          SATU dari kedua pola. Ini memerlukan konstruksi NFA (Non-deterministic
+          Finite Automata) dengan dua jalur.
+        </div>
+      </div>
+
+      <h3>2. String yang Diterima</h3>
+      <div class="example-box">
+        <strong>String yang diterima dari pola 01*1:</strong>
+        <ul>
+          <li>01 (0 diikuti 1 buah 1)</li>
+          <li>011 (0 diikuti 2 buah 1)</li>
+          <li>0111 (0 diikuti 3 buah 1)</li>
+          <li>01111, 011111, dst.</li>
+        </ul>
+
+        <strong>String yang diterima dari pola 001:</strong>
+        <ul>
+          <li>001 (tepat string ini)</li>
+        </ul>
+
+        <strong>Total string yang diterima:</strong> {001, 01, 011, 0111, 01111,
+        ...}
+
+        <strong>String yang ditolak:</strong>
+        <ul>
+          <li>0 (tidak ada 1 di akhir)</li>
+          <li>00 (tidak sesuai pola manapun)</li>
+          <li>0001 (lebih dari 001)</li>
+          <li>10 (tidak dimulai dengan 0)</li>
+        </ul>
+      </div>
+
+      <h3>3. Diagram Finite State Automata (NFA)</h3>
+      <svg width="650" height="300" viewBox="0 0 650 300">
+        <!-- State q0 (initial) -->
+        <circle
+          cx="80"
+          cy="150"
+          r="25"
+          fill="white"
+          stroke="black"
+          stroke-width="2"
+        />
+        <text x="80" y="155" text-anchor="middle" font-size="16">q₀</text>
+        <path
+          d="M 30 150 L 55 150"
+          stroke="black"
+          stroke-width="2"
+          marker-end="url(#arrowhead2)"
+        />
+
+        <!-- State q1 -->
+        <circle
+          cx="200"
+          cy="150"
+          r="25"
+          fill="white"
+          stroke="black"
+          stroke-width="2"
+        />
+        <text x="200" y="155" text-anchor="middle" font-size="16">q₁</text>
+
+        <!-- Upper path -->
+        <circle
+          cx="350"
+          cy="80"
+          r="25"
+          fill="white"
+          stroke="black"
+          stroke-width="2"
+        />
+        <text x="350" y="85" text-anchor="middle" font-size="16">q₂</text>
+
+        <circle
+          cx="500"
+          cy="80"
+          r="25"
+          fill="white"
+          stroke="black"
+          stroke-width="2"
+        />
+        <circle
+          cx="500"
+          cy="80"
+          r="20"
+          fill="none"
+          stroke="black"
+          stroke-width="2"
+        />
+        <text x="500" y="85" text-anchor="middle" font-size="16">q₃</text>
+
+        <!-- Lower path -->
+        <circle
+          cx="350"
+          cy="220"
+          r="25"
+          fill="white"
+          stroke="black"
+          stroke-width="2"
+        />
+        <text x="350" y="225" text-anchor="middle" font-size="16">q₄</text>
+
+        <circle
+          cx="500"
+          cy="220"
+          r="25"
+          fill="white"
+          stroke="black"
+          stroke-width="2"
+        />
+        <circle
+          cx="500"
+          cy="220"
+          r="20"
+          fill="none"
+          stroke="black"
+          stroke-width="2"
+        />
+        <text x="500" y="225" text-anchor="middle" font-size="16">q₅</text>
+
+        <!-- Transitions -->
+        <path
+          d="M 105 150 L 175 150"
+          stroke="black"
+          stroke-width="2"
+          marker-end="url(#arrowhead2)"
+        />
+        <text x="140" y="140" text-anchor="middle" font-size="14">0</text>
+
+        <path
+          d="M 220 135 L 325 95"
+          stroke="black"
+          stroke-width="2"
+          marker-end="url(#arrowhead2)"
+        />
+        <text x="270" y="110" text-anchor="middle" font-size="14">1</text>
+
+        <path
+          d="M 335 58 Q 310 30, 335 2 Q 350 -10, 365 2 Q 390 30, 365 58"
+          stroke="black"
+          stroke-width="2"
+          fill="none"
+          marker-end="url(#arrowhead2)"
+        />
+        <text x="350" y="25" text-anchor="middle" font-size="14">1</text>
+
+        <path
+          d="M 375 80 L 475 80"
+          stroke="black"
+          stroke-width="2"
+          marker-end="url(#arrowhead2)"
+        />
+        <text x="425" y="70" text-anchor="middle" font-size="14">1</text>
+
+        <path
+          d="M 220 165 L 325 205"
+          stroke="black"
+          stroke-width="2"
+          marker-end="url(#arrowhead2)"
+        />
+        <text x="270" y="195" text-anchor="middle" font-size="14">0</text>
+
+        <path
+          d="M 375 220 L 475 220"
+          stroke="black"
+          stroke-width="2"
+          marker-end="url(#arrowhead2)"
+        />
+        <text x="425" y="210" text-anchor="middle" font-size="14">1</text>
+
+        <defs>
+          <marker
+            id="arrowhead2"
+            markerWidth="10"
+            markerHeight="7"
+            refX="9"
+            refY="3.5"
+            orient="auto"
+          >
+            <polygon points="0 0, 10 3.5, 0 7" fill="black" />
+          </marker>
+        </defs>
+      </svg>
+
+      <h3>4. Tabel Transisi NFA</h3>
+      <table class="notation-table">
+        <thead>
+          <tr>
+            <th>State</th>
+            <th>Input '0'</th>
+            <th>Input '1'</th>
+            <th>Keterangan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>→q₀</td>
+            <td>q₁</td>
+            <td>-</td>
+            <td>State awal</td>
+          </tr>
+          <tr>
+            <td>q₁</td>
+            <td>q₄</td>
+            <td>q₂</td>
+            <td>Percabangan: jalur atas (1) atau bawah (0)</td>
+          </tr>
+          <tr>
+            <td>q₂</td>
+            <td>-</td>
+            <td>q₂, q₃</td>
+            <td>Self-loop untuk 1* dan transisi ke final</td>
+          </tr>
+          <tr>
+            <td>*q₃</td>
+            <td>-</td>
+            <td>-</td>
+            <td>Final state untuk 01*1</td>
+          </tr>
+          <tr>
+            <td>q₄</td>
+            <td>-</td>
+            <td>q₅</td>
+            <td>Menerima '1' terakhir dari 001</td>
+          </tr>
+          <tr>
+            <td>*q₅</td>
+            <td>-</td>
+            <td>-</td>
+            <td>Final state untuk 001</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>5. Penjelasan Konstruksi NFA</h3>
+      <div class="step-explanation">
+        <strong>Karakteristik NFA:</strong>
+        <ul>
+          <li>
+            Non-deterministic: dari q₁ ada dua kemungkinan transisi (ke q₂ atau
+            q₄)
+          </li>
+          <li>Jalur atas (q₀→q₁→q₂→q₃) untuk pola 01*1</li>
+          <li>Jalur bawah (q₀→q₁→q₄→q₅) untuk pola 001</li>
+          <li>
+            State q₂ memiliki transisi ganda dengan input '1' (ke q₂ dan q₃)
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- SOAL C -->
+    <div class="diagram-container">
+      <h2>C. Ekspresi Reguler: a* ∪ b*</h2>
+
+      <h3>1. Analisis Ekspresi Reguler</h3>
+      <div class="explanation">
+        <div class="er-display">ER = a* ∪ b*</div>
+
+        <strong>Interpretasi:</strong><br />
+        Ekspresi ini menerima:
+        <ul>
+          <li>
+            <strong>a*</strong> : nol atau lebih karakter 'a' (termasuk ε)
+          </li>
+          <li>
+            <strong>b*</strong> : nol atau lebih karakter 'b' (termasuk ε)
+          </li>
+        </ul>
+
+        <div class="definition-box">
+          <strong>Penting:</strong> Karena kedua pola mengandung Kleene closure
+          (*), string kosong (ε) diterima oleh kedua pola. Oleh karena itu,
+          state awal juga merupakan state akhir.
+        </div>
+      </div>
+
+      <h3>2. String yang Diterima</h3>
+      <div class="example-box">
+        <strong>String yang diterima:</strong>
+        <ul>
+          <li>ε (string kosong)</li>
+          <li>a, aa, aaa, aaaa, ... (hanya a)</li>
+          <li>b, bb, bbb, bbbb, ... (hanya b)</li>
+        </ul>
+
+        <strong>String yang ditolak:</strong>
+        <ul>
+          <li>ab (campuran a dan b)</li>
+          <li>ba (campuran b dan a)</li>
+          <li>aba, bab, aabb, dll. (kombinasi a dan b)</li>
+        </ul>
+
+        <strong>Catatan:</strong> FSA ini TIDAK menerima string yang mengandung
+        campuran 'a' dan 'b'. Hanya string yang terdiri dari semua 'a' ATAU
+        semua 'b' (atau string kosong).
+      </div>
+
+      <h3>3. Diagram Finite State Automata (NFA-ε)</h3>
+      <svg width="600" height="300" viewBox="0 0 600 300">
+        <!-- State q0 (initial and final) -->
+        <circle
+          cx="100"
+          cy="150"
+          r="25"
+          fill="white"
+          stroke="black"
+          stroke-width="2"
+        />
+        <circle
+          cx="100"
+          cy="150"
+          r="20"
+          fill="none"
+          stroke="black"
+          stroke-width="2"
+        />
+        <text x="100" y="155" text-anchor="middle" font-size="16">q₀</text>
+        <path
+          d="M 40 150 L 75 150"
+          stroke="black"
+          stroke-width="2"
+          marker-end="url(#arrowhead3)"
+        />
+
+        <!-- State q1 (final) -->
+        <circle
+          cx="300"
+          cy="80"
+          r="25"
+          fill="white"
+          stroke="black"
+          stroke-width="2"
+        />
+        <circle
+          cx="300"
+          cy="80"
+          r="20"
+          fill="none"
+          stroke="black"
+          stroke-width="2"
+        />
+        <text x="300" y="85" text-anchor="middle" font-size="16">q₁</text>
+
+        <!-- State q2 (final) -->
+        <circle
+          cx="300"
+          cy="220"
+          r="25"
+          fill="white"
+          stroke="black"
+          stroke-width="2"
+        />
+        <circle
+          cx="300"
+          cy="220"
+          r="20"
+          fill="none"
+          stroke="black"
+          stroke-width="2"
+        />
+        <text x="300" y="225" text-anchor="middle" font-size="16">q₂</text>
+
+        <!-- Transitions -->
+        <path
+          d="M 120 135 L 275 95"
+          stroke="black"
+          stroke-width="2"
+          stroke-dasharray="5,5"
+          marker-end="url(#arrowhead3)"
+        />
+        <text x="195" y="105" text-anchor="middle" font-size="14">ε</text>
+
+        <path
+          d="M 285 58 Q 260 30, 285 2 Q 300 -10, 315 2 Q 340 30, 315 58"
+          stroke="black"
+          stroke-width="2"
+          fill="none"
+          marker-end="url(#arrowhead3)"
+        />
+        <text x="300" y="25" text-anchor="middle" font-size="14">a</text>
+
+        <path
+          d="M 120 165 L 275 205"
+          stroke="black"
+          stroke-width="2"
+          stroke-dasharray="5,5"
+          marker-end="url(#arrowhead3)"
+        />
+        <text x="195" y="195" text-anchor="middle" font-size="14">ε</text>
+
+        <path
+          d="M 285 242 Q 260 270, 285 298 Q 300 310, 315 298 Q 340 270, 315 242"
+          stroke="black"
+          stroke-width="2"
+          fill="none"
+          marker-end="url(#arrowhead3)"
+        />
+        <text x="300" y="285" text-anchor="middle" font-size="14">b</text>
+
+        <defs>
+          <marker
+            id="arrowhead3"
+            markerWidth="10"
+            markerHeight="7"
+            refX="9"
+            refY="3.5"
+            orient="auto"
+          >
+            <polygon points="0 0, 10 3.5, 0 7" fill="black" />
+          </marker>
+        </defs>
+      </svg>
+
+      <h3>4. Tabel Transisi NFA-ε</h3>
+      <table class="notation-table">
+        <thead>
+          <tr>
+            <th>State</th>
+            <th>Input 'a'</th>
+            <th>Input 'b'</th>
+            <th>Input 'ε'</th>
+            <th>Keterangan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>→*q₀</td>
+            <td>-</td>
+            <td>-</td>
+            <td>{q₁, q₂}</td>
+            <td>State awal & final (menerima ε)</td>
+          </tr>
+          <tr>
+            <td>*q₁</td>
+            <td>q₁</td>
+            <td>-</td>
+            <td>-</td>
+            <td>Final state untuk a*</td>
+          </tr>
+          <tr>
+            <td>*q₂</td>
+            <td>-</td>
+            <td>q₂</td>
+            <td>-</td>
+            <td>Final state untuk b*</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>5. Penjelasan Konstruksi NFA-ε</h3>
+      <div class="step-explanation">
+        <strong>Karakteristik khusus:</strong>
+        <ol>
+          <li>
+            <strong>Transisi Epsilon (ε):</strong> Memungkinkan perpindahan
+            state tanpa membaca input
+          </li>
+          <li>
+            <strong>q₀ sebagai Final State:</strong> Karena a* dan b* keduanya
+            menerima string kosong
+          </li>
+          <li>
+            <strong>Percabangan dengan ε:</strong> Dari q₀, bisa langsung ke q₁
+            atau q₂ tanpa input
+          </li>
+          <li>
+            <strong>Self-loop:</strong> q₁ untuk menerima multiple 'a', q₂ untuk
+            multiple 'b'
+          </li>
+          <li>
+            <strong>Isolasi pola:</strong> Setelah memilih jalur (a* atau b*),
+            tidak bisa berpindah
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- RINGKASAN -->
+    <div class="summary-box">
+      <h2 style="background: none; border: none; text-align: center">
+        RINGKASAN DAN KESIMPULAN
+      </h2>
+
+      <h3>Notasi yang Digunakan dalam FSA</h3>
+      <table class="notation-table">
+        <thead>
+          <tr>
+            <th>Simbol</th>
+            <th>Keterangan</th>
+            <th>Contoh</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>→</td>
+            <td>State awal (initial state)</td>
+            <td>→q₀</td>
+          </tr>
+          <tr>
+            <td>*</td>
+            <td>State akhir (final/accepting state)</td>
+            <td>*q₄</td>
+          </tr>
+          <tr>
+            <td>Lingkaran ganda</td>
+            <td>State akhir dalam diagram</td>
+            <td>◎</td>
+          </tr>
+          <tr>
+            <td>ε</td>
+            <td>Transisi kosong (epsilon transition)</td>
+            <td>Perpindahan tanpa membaca input</td>
+          </tr>
+          <tr>
+            <td>Self-loop</td>
+            <td>Transisi ke state yang sama</td>
+            <td>q₁ → q₁</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Perbandingan Ketiga Ekspresi Reguler</h3>
+      <table class="notation-table">
+        <thead>
+          <tr>
+            <th>ER</th>
+            <th>Tipe FSA</th>
+            <th>Jumlah State</th>
+            <th>Karakteristik Khusus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ab*cc</td>
+            <td>DFA</td>
+            <td>5</td>
+            <td>Deterministik, satu jalur linear dengan self-loop</td>
+          </tr>
+          <tr>
+            <td>01*1 ∪ 001</td>
+            <td>NFA</td>
+            <td>6</td>
+            <td>Non-deterministik, dua jalur alternatif</td>
+          </tr>
+          <tr>
+            <td>a* ∪ b*</td>
+            <td>NFA-ε</td>
+            <td>3</td>
+            <td>Menggunakan transisi epsilon, state awal adalah final</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Konsep-Konsep Penting</h3>
+      <div class="definition-box">
+        <h4>1. Kleene Closure (*)</h4>
+        <p>Operator * menunjukkan pengulangan nol atau lebih kali. Contoh:</p>
+        <ul>
+          <li><strong>b*</strong> = {ε, b, bb, bbb, ...}</li>
+          <li><strong>a*</strong> = {ε, a, aa, aaa, ...}</li>
+        </ul>
+        <p>Catatan: Kleene closure SELALU menerima string kosong (ε)</p>
+      </div>
+
+      <div class="definition-box">
+        <h4>2. Union (∪)</h4>
+        <p>
+          Operator ∪ menggabungkan dua ekspresi reguler, menerima string yang
+          memenuhi SALAH SATU pola:
+        </p>
+        <ul>
+          <li>L(ER₁ ∪ ER₂) = L(ER₁) ∪ L(ER₂)</li>
+          <li>Biasanya memerlukan konstruksi NFA dengan percabangan</li>
+        </ul>
+      </div>
+
+      <div class="definition-box">
+        <h4>3. DFA vs NFA vs NFA-ε</h4>
+        <ul>
+          <li>
+            <strong>DFA (Deterministic FA):</strong> Setiap state memiliki tepat
+            satu transisi untuk setiap input
+          </li>
+          <li>
+            <strong>NFA (Non-deterministic FA):</strong> State dapat memiliki
+            multiple transisi untuk input yang sama
+          </li>
+          <li>
+            <strong>NFA-ε:</strong> NFA dengan transisi epsilon (perpindahan
+            tanpa membaca input)
+          </li>
+        </ul>
+      </div>
+
+      <h3>Langkah Umum Konversi ER ke FSA</h3>
+      <ol>
+        <li>
+          <strong>Analisis Struktur ER:</strong>
+          <ul>
+            <li>Identifikasi operator (*, ∪, konkatenasi)</li>
+            <li>Pecah menjadi sub-ekspresi</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Tentukan Tipe FSA:</strong>
+          <ul>
+            <li>ER sederhana → DFA</li>
+            <li>ER dengan union → NFA</li>
+            <li>ER kompleks dengan banyak * → NFA-ε</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Konstruksi State:</strong>
+          <ul>
+            <li>State awal untuk memulai</li>
+            <li>State transisi untuk setiap komponen</li>
+            <li>State akhir untuk menerima string</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Tambahkan Transisi:</strong>
+          <ul>
+            <li>Self-loop untuk Kleene closure</li>
+            <li>Percabangan untuk union</li>
+            <li>ε-transisi jika diperlukan</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Verifikasi:</strong>
+          <ul>
+            <li>Test dengan string yang seharusnya diterima</li>
+            <li>Test dengan string yang seharusnya ditolak</li>
+          </ul>
+        </li>
+      </ol>
+
+      <h3>Tips Penting</h3>
+      <div class="example-box">
+        <ul>
+          <li>
+            <strong>Self-loop:</strong> Gunakan untuk implementasi Kleene
+            closure (*)
+          </li>
+          <li>
+            <strong>State Final:</strong> Jika ER menerima ε, state awal harus
+            juga final
+          </li>
+          <li>
+            <strong>Percabangan:</strong> Union (∪) biasanya memerlukan
+            percabangan dari state awal
+          </li>
+          <li>
+            <strong>Minimisasi:</strong> DFA dapat diminimisasi, NFA tidak
+            selalu
+          </li>
+          <li>
+            <strong>Konversi:</strong> NFA dapat dikonversi ke DFA menggunakan
+            subset construction
+          </li>
+        </ul>
+      </div>
+
+      <div
+        class="step-explanation"
+        style="margin-top: 10mm; text-align: center; font-style: italic"
+      >
+        <strong>Kesimpulan Akhir:</strong><br />
+        Hubungan antara Ekspresi Reguler dan Finite State Automata adalah
+        fundamental dalam teori komputasi. Setiap ER dapat direpresentasikan
+        sebagai FSA, dan sebaliknya. Pemahaman tentang konversi ini penting
+        untuk desain compiler, pattern matching, dan berbagai aplikasi dalam
+        computer science.
+      </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- Footer -->
+    <div
+      style="
+        text-align: center;
+        margin-top: 20mm;
+        padding-top: 5mm;
+        border-top: 1px solid #333;
+      "
+    >
+      <p style="font-size: 10pt; color: #666">
+        Mata Kuliah: Teori Bahasa dan Automata<br />
+        Pertemuan 5 - Ekspresi Reguler dan FSA
+      </p>
+    </div>
+  </body>
+</html>
