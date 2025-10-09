@@ -1,64 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CIHUY RESTO Online</title>
-    <style>
-      body {
-        background: linear-gradient(135deg, #2e2e2e, #8b5e3c, #1a1a1a);
-        color: #f5f5f5;
-        font-family: "Curlz MT", cursive;
-        min-height: 100vh;
-        margin: 0;
-      }
-      marquee {
-        font-size: 80px;
-        color: #f5f5f5;
-        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-      }
-      h3 {
-        font-size: 35px;
-        text-align: center;
-        margin: 20px 0;
-        color: #f1c27d;
-      }
-      p {
-        font-size: 25px;
-        margin: 10px 0;
-      }
-      .line {
-        border: 15px solid #a0522d;
-        border-radius: 12px;
-        margin: 20px 0;
-      }
-    </style>
-  </head>
-  <body>
-    <marquee behavior="scroll" direction="left">
-      Welcome in CIHUY RESTO Online
-    </marquee>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CIHUY RESTO Online</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #2e2e2e, #8b5e3c, #1a1a1a);
+      color: #f5f5f5;
+      font-family: "Curlz MT", cursive;
+      min-height: 100vh;
+      margin: 0;
+      padding-bottom: 30px;
+    }
+    marquee {
+      font-size: 80px;
+      color: #f5f5f5;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    }
+    h3 {
+      font-size: 35px;
+      text-align: center;
+      margin: 20px 0;
+      color: #f1c27d;
+    }
+    p {
+      font-size: 25px;
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+    .line {
+      border: 15px solid #a0522d;
+      border-radius: 12px;
+      margin: 20px 0;
+    }
+    .media-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      margin: 30px 20px;
+      flex-wrap: wrap;
+    }
+    .video-box {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 15px;
+      border: 3px solid #a0522d;
+    }
+    video {
+      max-width: 500px;
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+    .audio-box {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 15px;
+      border: 3px solid #a0522d;
+      text-align: center;
+    }
+    audio {
+      width: 100%;
+      max-width: 400px;
+      margin-top: 10px;
+    }
+    .audio-label {
+      font-size: 22px;
+      color: #f1c27d;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <marquee behavior="scroll" direction="left">
+    Welcome in CIHUY RESTO Online
+  </marquee>
+  <hr class="line" />
 
-    <hr class="line" />
+  <div class="media-container">
+    <div class="video-box">
+      <video controls autoplay muted loop>
+        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+        Browser Anda tidak mendukung video.
+      </video>
+    </div>
+    
+    <div class="audio-box">
+      <div class="audio-label">🎵 Background Music 🎵</div>
+      <audio controls autoplay loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung audio.
+      </audio>
+    </div>
+  </div>
 
-    <h3>Gratis choco blast setiap pemesanan > Rp50.000</h3>
+  <hr class="line" />
 
-    <p>Appetizer:</p>
-    <p>Zuppa Soup</p>
-    <p>Pan Cake</p>
-    <br />
-    <p>Main Course:</p>
-    <p>Beef Steak</p>
-    <p>Fried Chicken</p>
-    <br />
-    <p>Dessert:</p>
-    <p>Pudding</p>
-    <p>Chocolate</p>
-    <p>Chocolate Strawberry</p>
-    <p>Vanilla</p>
+  <h3>Gratis choco blast setiap pemesanan > Rp50.000</h3>
 
-    <h3>
-      Terima kasih atas kunjungan anda, semoga anda puas dengan pelayanan kami
-    </h3>
-  </body>
+  <p>Appetizer:</p>
+  <p>Zuppa Soup</p>
+  <p>Pan Cake</p>
+  <br />
+  <p>Main Course:</p>
+  <p>Beef Steak</p>
+  <p>Fried Chicken</p>
+  <br />
+  <p>Dessert:</p>
+  <p>Pudding</p>
+  <p>Chocolate</p>
+  <p>Chocolate Strawberry</p>
+  <p>Vanilla</p>
+
+  <h3>
+    Terima kasih atas kunjungan anda, semoga anda puas dengan pelayanan kami
+  </h3>
+</body>
 </html>
