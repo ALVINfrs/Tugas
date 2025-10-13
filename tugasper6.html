@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registrasi Anggota - Perpustakaan Unindra</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#38bdf8",
+              darkglass: "rgba(15, 23, 42, 0.5)",
+            },
+            backdropBlur: {
+              glass: "20px",
+            },
+            boxShadow: {
+              glow: "0 0 20px rgba(56, 189, 248, 0.4)",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+
+  <body
+    class="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-black flex flex-col items-center justify-center px-6 py-10 text-gray-100 relative overflow-hidden"
+  >
+    <div
+      class="absolute -top-40 -left-40 w-96 h-96 bg-cyan-500/20 blur-[150px] rounded-full"
+    ></div>
+    <div
+      class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-600/20 blur-[180px] rounded-full"
+    ></div>
+
+    <header
+      class="backdrop-blur-glass bg-darkglass border border-white/10 shadow-glow rounded-3xl w-full max-w-3xl p-6 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up"
+    >
+      <img
+        src="./logo-unindra.png"
+        alt="Logo Unindra"
+        class="w-20 h-20 object-contain animate-glow-slow"
+      />
+      <div class="text-center sm:text-left">
+        <h1
+          class="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text tracking-wider"
+        >
+          PERPUSTAKAAN
+        </h1>
+        <h2 class="text-lg text-gray-300">Universitas Indraprasta PGRI</h2>
+      </div>
+    </header>
+
+    <div
+      class="backdrop-blur-glass bg-darkglass border border-white/10 shadow-glow rounded-3xl w-full max-w-3xl mt-10 p-8 animate-fade-in-up"
+    >
+      <h2
+        class="text-3xl font-semibold text-center mb-8 bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 text-transparent bg-clip-text"
+      >
+        Formulir Registrasi Anggota
+      </h2>
+
+      <form class="space-y-6">
+        <div>
+          <label class="block mb-2 text-gray-300 font-medium"
+            >Nama Lengkap</label
+          >
+          <input
+            type="text"
+            placeholder="Masukkan nama lengkap Anda"
+            class="w-full bg-white/5 border border-white/20 rounded-2xl p-3 text-gray-100 placeholder-gray-400 focus:ring-2 focus:ring-cyan-400 focus:outline-none transition-all duration-300 hover:border-cyan-400"
+          />
+        </div>
+
+        <div>
+          <label class="block mb-2 text-gray-300 font-medium"
+            >Jenis Kelamin</label
+          >
+          <div class="flex items-center gap-6">
+            <label class="flex items-center gap-2">
+              <input type="radio" name="jk" class="accent-cyan-400" />
+              <span>Laki-laki</span>
+            </label>
+            <label class="flex items-center gap-2">
+              <input type="radio" name="jk" class="accent-cyan-400" />
+              <span>Perempuan</span>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <label class="block mb-2 text-gray-300 font-medium"
+            >Tempat, Tanggal Lahir</label
+          >
+          <input
+            type="text"
+            placeholder="Contoh: Jakarta, 10 Oktober 2000"
+            class="w-full bg-white/5 border border-white/20 rounded-2xl p-3 focus:ring-2 focus:ring-cyan-400 focus:outline-none transition-all duration-300 hover:border-cyan-400"
+          />
+        </div>
+
+        <div>
+          <label class="block mb-2 text-gray-300 font-medium">NPM</label>
+          <input
+            type="text"
+            placeholder="Masukkan NPM Anda"
+            class="w-full bg-white/5 border border-white/20 rounded-2xl p-3 focus:ring-2 focus:ring-cyan-400 focus:outline-none transition-all duration-300 hover:border-cyan-400"
+          />
+        </div>
+
+        <div>
+          <label class="block mb-2 text-gray-300 font-medium">Fakultas</label>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <label class="flex items-center gap-2"
+              ><input type="radio" name="fakultas" class="accent-cyan-400" />
+              FTMIPA</label
+            >
+            <label class="flex items-center gap-2"
+              ><input type="radio" name="fakultas" class="accent-cyan-400" />
+              FIPPS</label
+            >
+            <label class="flex items-center gap-2"
+              ><input type="radio" name="fakultas" class="accent-cyan-400" />
+              FBS</label
+            >
+            <label class="flex items-center gap-2"
+              ><input type="radio" name="fakultas" class="accent-cyan-400" />
+              PASCA SARJANA</label
+            >
+          </div>
+        </div>
+
+        <div>
+          <label class="block mb-2 text-gray-300 font-medium"
+            >Program Studi</label
+          >
+          <select
+            class="w-full bg-white/5 border border-white/20 rounded-2xl p-3 text-gray-100 focus:ring-2 focus:ring-cyan-400 focus:outline-none transition-all duration-300 hover:border-cyan-400"
+          >
+            <option>Pilih Program Studi</option>
+            <option>Informatika</option>
+            <option>Teknik Industri</option>
+            <option>Pend. Biologi</option>
+            <option>Pend. Matematika</option>
+            <option>Pend. Fisika</option>
+            <option>Pend. Ekonomi</option>
+            <option>Pend. Sejarah</option>
+            <option>Pend. Bhs Indonesia</option>
+            <option>Pend. Bhs Inggris</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block mb-2 text-gray-300 font-medium"
+            >Kategori Buku</label
+          >
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+            <label class="flex items-center gap-2"
+              ><input type="checkbox" class="accent-cyan-400" />
+              Pendidikan</label
+            >
+            <label class="flex items-center gap-2"
+              ><input type="checkbox" class="accent-cyan-400" /> Ilmu
+              Sosial</label
+            >
+            <label class="flex items-center gap-2"
+              ><input type="checkbox" class="accent-cyan-400" /> Ilmu
+              Alam</label
+            >
+            <label class="flex items-center gap-2"
+              ><input type="checkbox" class="accent-cyan-400" /> Agama</label
+            >
+            <label class="flex items-center gap-2"
+              ><input type="checkbox" class="accent-cyan-400" /> Budaya</label
+            >
+            <label class="flex items-center gap-2"
+              ><input type="checkbox" class="accent-cyan-400" /> Matematika &
+              Sains</label
+            >
+          </div>
+        </div>
+
+        <div class="flex justify-center gap-6 pt-6">
+          <button
+            type="submit"
+            class="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-2xl shadow-lg hover:scale-105 hover:shadow-cyan-500/50 transition-all duration-300"
+          >
+            DAFTAR
+          </button>
+          <button
+            type="reset"
+            class="px-8 py-3 bg-white/10 text-gray-300 font-semibold rounded-2xl hover:scale-105 hover:bg-white/20 transition-all duration-300"
+          >
+            MUAT ULANG
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <footer class="mt-10 text-gray-400 text-sm">
+      &copy; 2025 Universitas Indraprasta PGRI • Perpustakaan
+    </footer>
+
+    <style>
+      @keyframes fade-in-up {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-fade-in-up {
+        animation: fade-in-up 0.9s ease-in-out;
+      }
+
+      @keyframes glow-slow {
+        0%,
+        100% {
+          filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.4));
+        }
+        50% {
+          filter: drop-shadow(0 0 18px rgba(56, 189, 248, 0.6));
+        }
+      }
+
+      .animate-glow-slow {
+        animation: glow-slow 3s infinite;
+      }
+    </style>
+  </body>
+</html>
