@@ -26,7 +26,7 @@
   </head>
 
   <body
-    class="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-black flex flex-col items-center justify-center px-6 py-10 text-gray-100 relative overflow-hidden"
+    class="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-black flex flex-col items-center px-6 py-10 text-gray-100 relative overflow-y-auto"
   >
     <div
       class="absolute -top-40 -left-40 w-96 h-96 bg-cyan-500/20 blur-[150px] rounded-full"
@@ -36,7 +36,7 @@
     ></div>
 
     <header
-      class="backdrop-blur-glass bg-darkglass border border-white/10 shadow-glow rounded-3xl w-full max-w-3xl p-6 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up"
+      class="backdrop-blur-glass bg-darkglass border border-white/10 shadow-glow rounded-3xl w-full max-w-3xl p-6 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up z-10"
     >
       <img
         src="./logo-unindra.png"
@@ -54,7 +54,7 @@
     </header>
 
     <div
-      class="backdrop-blur-glass bg-darkglass border border-white/10 shadow-glow rounded-3xl w-full max-w-3xl mt-10 p-8 animate-fade-in-up"
+      class="backdrop-blur-glass bg-darkglass border border-white/10 shadow-glow rounded-3xl w-full max-w-3xl mt-10 p-8 animate-fade-in-up z-10"
     >
       <h2
         class="text-3xl font-semibold text-center mb-8 bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 text-transparent bg-clip-text"
@@ -137,9 +137,9 @@
             >Program Studi</label
           >
           <select
-            class="w-full bg-white/5 border border-white/20 rounded-2xl p-3 text-gray-100 focus:ring-2 focus:ring-cyan-400 focus:outline-none transition-all duration-300 hover:border-cyan-400"
+            class="w-full appearance-none bg-white/5 border border-white/20 rounded-2xl p-3 text-gray-100 placeholder-gray-400 focus:ring-2 focus:ring-cyan-400 focus:outline-none transition-all duration-300 hover:border-cyan-400 backdrop-blur-glass custom-select"
           >
-            <option>Pilih Program Studi</option>
+            <option disabled selected>Pilih Program Studi</option>
             <option>Informatika</option>
             <option>Teknik Industri</option>
             <option>Pend. Biologi</option>
@@ -199,7 +199,7 @@
       </form>
     </div>
 
-    <footer class="mt-10 text-gray-400 text-sm">
+    <footer class="mt-10 text-gray-400 text-sm z-10">
       &copy; 2025 Universitas Indraprasta PGRI • Perpustakaan
     </footer>
 
@@ -214,11 +214,9 @@
           transform: translateY(0);
         }
       }
-
       .animate-fade-in-up {
         animation: fade-in-up 0.9s ease-in-out;
       }
-
       @keyframes glow-slow {
         0%,
         100% {
@@ -228,9 +226,34 @@
           filter: drop-shadow(0 0 18px rgba(56, 189, 248, 0.6));
         }
       }
-
       .animate-glow-slow {
         animation: glow-slow 3s infinite;
+      }
+
+      .custom-select {
+        background-color: rgba(15, 23, 42, 0.6);
+        color: #e2e8f0;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 16px;
+        padding-right: 2.5rem;
+        backdrop-filter: blur(12px);
+        transition: all 0.3s ease;
+      }
+
+      .custom-select option {
+        background-color: rgba(15, 23, 42, 0.9);
+        color: #e2e8f0;
+      }
+
+      .custom-select:hover {
+        border-color: rgba(56, 189, 248, 0.6);
+        box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+      }
+
+      .custom-select:focus {
+        outline: none;
+        border-color: rgba(56, 189, 248, 0.9);
+        box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
       }
     </style>
   </body>
